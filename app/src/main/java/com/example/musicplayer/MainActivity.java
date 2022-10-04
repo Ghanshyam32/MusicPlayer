@@ -28,19 +28,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-ListView listView;
-    String [] items;
+    ListView listView;
+    String[] items;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-listView = findViewById(R.id.listViewSong);
-runtimePermission();
+        listView = findViewById(R.id.listViewSong);
+        runtimePermission();
     }
 
-    public void runtimePermission()
-    {
+    public void runtimePermission() {
         Dexter.withContext(this).withPermission(Manifest.permission.READ_EXTERNAL_STORAGE).withListener(new PermissionListener() {
             @Override
             public void onPermissionGranted(PermissionGrantedResponse permissionGrantedResponse) {
@@ -59,17 +58,16 @@ runtimePermission();
         }).check();
     }
 
-    public ArrayList<File> findSong(File file){
+    public ArrayList<File> findSong(File file) {
         ArrayList<File> arrayList = new ArrayList<>();
 
         File[] files = file.listFiles();
 
-        for(File singleFile:files){
-            if(singleFile.isDirectory() && !singleFile.isHidden()){
+        for (File singleFile : files) {
+            if (singleFile.isDirectory() && !singleFile.isHidden()) {
                 arrayList.addAll(findSong(singleFile));
-            }
-            else{
-                if(singleFile.getName().endsWith(".mp3") || singleFile.getName().endsWith(".wav")){
+            } else {
+                if (singleFile.getName().endsWith(".mp3") || singleFile.getName().endsWith(".wav")) {
                     arrayList.add(singleFile);
                 }
             }
@@ -77,34 +75,34 @@ runtimePermission();
         return arrayList;
     }
 
-    void displaySongs(){
+    void displaySongs() {
 
         final ArrayList<File> mySongs = findSong(Environment.getExternalStorageDirectory());
         items = new String[mySongs.size()];
-        for(int i =0;i<mySongs.size();i++){
-             items[i] = mySongs.get(i).getName().toString().replace(".mp3", "").replace(".wav", "");
+        for (int i = 0; i < mySongs.size(); i++) {
+            items[i] = mySongs.get(i).getName().toString().replace(".mp3", "").replace(".wav", "");
 
         }
 //        ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, items);
 //
 //        listView.setAdapter(myAdapter);
-        customAdapter customAdapter= new customAdapter();
+        customAdapter customAdapter = new customAdapter();
         listView.setAdapter(customAdapter);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 String songName = (String) listView.getItemAtPosition(i);
-                startActivity(new Intent(getApplicationContext(),playerActivity.class)
+                startActivity(new Intent(getApplicationContext(), playerActivity.class)
                         .putExtra("songs", mySongs)
                         .putExtra("songname", songName)
-                        .putExtra("pos",i));
+                        .putExtra("pos", i));
             }
         });
     }
 
 
-    class customAdapter extends BaseAdapter{
+    class customAdapter extends BaseAdapter {
 
         @Override
         public int getCount() {
@@ -123,7 +121,7 @@ runtimePermission();
 
         @Override
         public View getView(int i, View view, ViewGroup viewGroup) {
-            View myView = getLayoutInflater().inflate(R.layout.list_item,null);
+            View myView = getLayoutInflater().inflate(R.layout.list_item, null);
             TextView textSong = myView.findViewById(R.id.txtSongName);
             textSong.setSelected(true);
             textSong.setText(items[i]);
