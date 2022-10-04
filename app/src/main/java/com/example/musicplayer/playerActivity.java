@@ -3,12 +3,14 @@ package com.example.musicplayer;
 
 import androidx.annotation.NonNull;
         import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
-        import android.animation.AnimatorSet;
+import android.animation.AnimatorSet;
         import android.animation.ObjectAnimator;
         import android.content.Intent;
         import android.graphics.PorterDuff;
-        import android.media.MediaPlayer;
+import android.graphics.drawable.AnimationDrawable;
+import android.media.MediaPlayer;
         import android.net.Uri;
         import android.os.Bundle;
         import android.os.Handler;
@@ -16,7 +18,8 @@ import androidx.annotation.NonNull;
         import android.view.View;
         import android.widget.Button;
         import android.widget.ImageView;
-        import android.widget.SeekBar;
+import android.widget.LinearLayout;
+import android.widget.SeekBar;
         import android.widget.TextView;
 
 //        import com.gauravk.audiovisualizer.visualizer.BarVisualizer;
@@ -312,4 +315,7 @@ public class playerActivity extends AppCompatActivity {
 //            mVisualizer.release();
 //        super.onDestroy();
 //    }
+
+
+
 }

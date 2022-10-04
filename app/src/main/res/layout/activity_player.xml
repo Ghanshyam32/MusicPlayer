@@ -4,9 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#283593"
+    android:background="@drawable/gradientlist"
     android:orientation="vertical"
     android:weightSum="10"
+    android:id="@+id/mainLayout"
     tools:context=".playerActivity">
 
     <LinearLayout
@@ -77,11 +78,14 @@
             <SeekBar
                 android:id="@+id/seekbars"
                 android:layout_width="250dp"
+                android:outlineSpotShadowColor="@color/black"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
                 android:layout_alignParentBottom="true"
-                android:layout_margin="20dp"
-                android:layout_marginBottom="40dp">
+                android:layout_centerInParent="true"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="20dp">
 
             </SeekBar>
         </RelativeLayout>
@@ -150,16 +154,16 @@
             </Button>
 
 
-<!--            <com.gauravk.audiovisualizer.visualizer.BarVisualizer xmlns:custom="http://schemas.android.com/apk/res-auto"-->
-<!--                android:id="@+id/bar"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="70dp"-->
-<!--                android:layout_alignParentBottom="true"-->
-<!--                custom:avColor="#FF362E"-->
-<!--                custom:avDensity="0.5"-->
-<!--                custom:avSpeed="normal"-->
-<!--                custom:avType="outline"-->
-<!--                custom:avWidth="4dp" />-->
+            <!--            <com.gauravk.audiovisualizer.visualizer.BarVisualizer xmlns:custom="http://schemas.android.com/apk/res-auto"-->
+            <!--                android:id="@+id/bar"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="70dp"-->
+            <!--                android:layout_alignParentBottom="true"-->
+            <!--                custom:avColor="#FF362E"-->
+            <!--                custom:avDensity="0.5"-->
+            <!--                custom:avSpeed="normal"-->
+            <!--                custom:avType="outline"-->
+            <!--                custom:avWidth="4dp" />-->
 
         </RelativeLayout>
 
