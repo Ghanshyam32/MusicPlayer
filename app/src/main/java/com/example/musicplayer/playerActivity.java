@@ -259,13 +259,19 @@ public class playerActivity extends AppCompatActivity {
         animatorSet.start();
     }
 
+//    @Override
+//    public void onBackPressed() {
+//        Intent startMain = new Intent(Intent.ACTION_MAIN);
+//        startMain.addCategory(Intent.CATEGORY_HOME);
+//        startMain.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//        startActivity(startMain);
+//    }
+
     @Override
     public void onBackPressed() {
-        Intent startMain = new Intent(Intent.ACTION_MAIN);
-        startMain.addCategory(Intent.CATEGORY_HOME);
-        startMain.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(startMain);
+        super.onBackPressed();
+        Intent intent = new Intent(playerActivity.this, MainActivity.class);
+        startActivity(intent);
+        finish();
     }
-
-
 }
